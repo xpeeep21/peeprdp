@@ -1,0 +1,36 @@
+@echo off
+echo Downloading necessary files...
+
+:: تنظيف أي ملفات أو مجلدات موجودة سابقًا
+if exist Litemanager (
+    rmdir /s /q Litemanager
+)
+
+:: تحميل الملف Litemanager.zip من GitHub
+curl -L -o Litemanager.zip "https://github.com/Chandoo12/Lm_in_GD_Github_repo/raw/main/Litemanager.zip"
+
+:: التحقق من نجاح تحميل الملف
+if exist Litemanager.zip (
+    echo File downloaded successfully.
+    echo Extracting the downloaded file...
+    
+    :: استخراج الملف المضغوط باستخدام PowerShell
+    powershell -Command "Expand-Archive -Path Litemanager.zip -DestinationPath Litemanager"
+
+    :: التحقق من استخراج الملف التنفيذي
+    if exist Litemanager\Litemanager.exe (
+        echo Extraction successful! Proceeding with the setup...
+        
+        :: تشغيل الملف التنفيذي
+        start Litemanager\Litemanager.exe
+    ) else (
+        echo Error: The extracted files are missing or corrupted.
+        exit /b 1
+    )
+) else (
+    echo Error: Failed to download the file.
+    exit /b 1
+)
+
+echo All tasks completed.
+pause
