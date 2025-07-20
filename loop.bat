@@ -1,0 +1,6 @@
+@echo off
+echo Starting the time counter loop...
+:LOOP
+echo The process is running...
+timeout /t 10 /nobreak > nul
+goto LOOP
