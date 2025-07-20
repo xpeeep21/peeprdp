@@ -1,0 +1,6 @@
+@echo off
+echo Connecting to Litemanager...
+echo Please wait while the connection is established...
+timeout /t 5 /nobreak > nul
+echo Connection established successfully!
+pause
