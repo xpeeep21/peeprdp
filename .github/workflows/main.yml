@@ -1,0 +1,21 @@
+name: Windows - Litemanager
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Start Building
+    runs-on: windows-latest
+
+    steps:
+      - name: Downloading & Installing Essentials
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/Chandoo12/Lm_in_GD_Github_repo/raw/main/Downloads.bat" -OutFile "Downloads.bat"
+          cmd /c Downloads.bat
+
+      - name: Connect to Litemanager
+        run: cmd /c show.bat
+
+      - name: Time Counter
+        run: cmd /c loop.bat
